@@ -1,0 +1,11 @@
+<launch>
+  <node name="com" pkg="mini_ros" type="com.py" respawn="false" output="screen"/>
+  <node name="odom" pkg="mini_ros" type="odom.py" respawn="false" output="screen"/>
+  <node name="approx_zmp_single_mass" pkg="mini_ros" type="approx_zmp_single_mass.py" respawn="false" output="screen"/>
+  <node name="approx_zmp_multi_mass" pkg="mini_ros" type="approx_zmp_multi_mass.py" respawn="false" output="screen"/>
+  <node name="measured_zmp" pkg="mini_ros" type="measured_zmp.py" respawn="false" output="screen"/>
+
+  <!-- launch rviz-->
+  <arg name="rvizconfig" default="$(find mini_ros_description)/rviz/robotis_mini.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+    <rosparam file="$(find mini_ros)/config/walkingParam.yaml"/>
+    <node name="ball_detection" pkg="mini_ros" type="ball_detection.py" respawn="false" output="screen"/>
+    <node name="walking" pkg="mini_ros" type="walking_node" respawn="false" output="screen" required = "true"/>
+</launch>

@@ -1,0 +1,21 @@
+     # Walking parameters
+     is_sim: True
+     use_perception: False
+     steps_per_meter: 50
+
+     # Step parameters
+     x_size: 20 # step x size (stride size)
+     y_size: 30 # step y size (foot y-distance from the body center)
+     n_step: 6   # Always Even number
+     z_h: 8.0 # Foot lifting height
+     
+     t_step: 1.5 # Step Size
+     ds_time: 1.0 # Double support phase ratio, (double support phase time)/ (step_time)   range: 0 ~ 1.0
+
+     # Stabilizer Gain
+     pitch_ankle_gain: 0 # IMU orientation to ankle pitch angle feedback
+     roll_ankle_gain: 0 # IMU orientation to ankle roll angle feedback
+     pitch_disp_gain: 0 # IMU orientation to torso x direction feedback
+     roll_disp_gain: 0 # IMU orientation to torso y direction feedback
+     ax_gain: 0 # x direction acceleration feedback
+     ay_gain: 0 # y direction acceleration feedback

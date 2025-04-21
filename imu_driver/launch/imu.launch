@@ -1,0 +1,3 @@
+<launch>
+    <node name="bno055_node" pkg="bno055_linux_driver" type="bno055_node" />
+</launch>

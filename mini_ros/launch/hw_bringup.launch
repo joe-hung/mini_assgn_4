@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="imu" default="false"/>
+  <arg name="camera" default="false"/>
+  <arg name="usb_port" default="/dev/ttyUSB0" />
+  <arg name="baud_rate" default="1000000" />
+
+  <node pkg="mini_ros" type="mini_hw_control" name="mini_hw_control" output="screen">
+    <param name="usb_port" value="$(arg usb_port)"/>
+    <param name="baud_rate" value="$(arg baud_rate)"/>    
+  </node>
+
+  <arg name="model" default="$(find mini_ros_description)/urdf/robotis_mini_upgrade.urdf"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub"/>
+
+  <rosparam file="$(find mini_ros)/config/controllers.yaml" command="load"/>
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" args="hw_position_controller joint_state_controller"/>
+
+  <group if="$(arg imu)">
+    <include file="$(find bno055_linux_driver)/launch/imu.launch" />
+  </group>
+
+  <group if="$(arg camera)">
+    <node name="camera" pkg="mini_ros" type="camera.py" respawn="false" output="screen"/>  
+  </group>
+</launch> 

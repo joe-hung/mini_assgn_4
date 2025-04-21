@@ -1,0 +1,7 @@
+<launch>
+  <!-- sets and launches gazebo for robotis mini -->
+  <include file="$(find mini_ros_gazebo)/launch/gazebo.launch" />
+  
+  <!-- sets and launches the controllers for robotis mini -->
+  <include file="$(find mini_ros)/launch/control.launch" />
+</launch>
